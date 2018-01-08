@@ -57,4 +57,8 @@ public class Student {
   public String getTFirstName() {
     return this.tfirst;
   }
+
+  public String toString() {
+    return this.last + " " + this.first + " " + this.grade + " " + this.classroom + " " + this.bus + " " + this.gpa + " " + this.tlast + " " + this.tfirst;
+  }
 }
