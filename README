@@ -1,0 +1,6 @@
+How to compile/run the program:
+
+1. Compile the program via the command:
+    "javac SchoolSearch.java"
+2. Run the program via the command:
+    "java SchoolSearch"
