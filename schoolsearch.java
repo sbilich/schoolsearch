@@ -135,14 +135,14 @@ public class SchoolSearch {
     }
 
     for (Student matchingStu: matchingStudents) {
-      System.out.println("Student: " matchingStu.getLastName() + ", " + matchingStu.getFirstName());
+      System.out.println("Student: " + matchingStu.getLastName() + ", " + matchingStu.getFirstName());
       if (bus) {
         System.out.println("Bus Route: " + matchingStu.getBus());
       }
       else {
         System.out.println("Grade: " + matchingStu.getGrade());
         System.out.println("Classroom: " + matchingStu.getClassroom());
-        System.out.println("Teacher: " + matchingStu.getTLastName() + ", " matchingStu.getTFirstName());
+        System.out.println("Teacher: " + matchingStu.getTLastName() + ", " + matchingStu.getTFirstName());
       }
     }
   }
@@ -160,7 +160,7 @@ public class SchoolSearch {
 
     System.out.println("Students in " + tLastName + "'s class");
     for (Student matchingStu: matchingStudents) {
-      System.out.println(matchingStu.getLasttName() + ", " + matchingStu.getFirstName());
+      System.out.println(matchingStu.getLastName() + ", " + matchingStu.getFirstName());
     }
   }
 
