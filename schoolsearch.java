@@ -103,20 +103,30 @@ public class SchoolSearch {
   private static void initiateSearch() {
     char firstLetter = userInput[0].charAt(0);
 
-    switch(firstLetter) {
+    switch (firstLetter) {
       case 'S':
-        if (userInput.length < 3) {
-          searchByLastName(userInput[1]);
-        }
-        else {
-          searchByLastNameFindBus(userInput[1]);
-        }
+          if (userInput.length < 3) {
+            searchByLastName(userInput[1], false);
+          }
+          else {
+            searchByLastName(userInput[1], true);
+          }
+          break;
+      case 'T':
+          searchByTeacher(userInput[1]);
+          break;
+      case 'B':
+          searchByBus(userInput[1]);
+      case 'G':
+        searchByGrade(userInput[1]);
     }
   }
+
   /*
-  * Given a student's last name, find the student's grade, classroom and teacher.
+  * Given a student's last name, find the student's grade, classroom and teacher
+  * or bus route.
   */
-  private static void searchByLastName(String lastName) {
+  private static void searchByLastName(String lastName, boolean bus) {
     ArrayList<Student> matchingStudents = new ArrayList<Student>();
     for (Student stu: students) {
       if (stu.getLastName().equals(lastName.toUpperCase())) {
@@ -124,14 +134,67 @@ public class SchoolSearch {
       }
     }
 
-    //print out student's grade, classroom and teacher
     for (Student matchingStu: matchingStudents) {
-      System.out.println("Grade: " + matchingStu.getGrade());
-      System.out.println("Classroom: " + matchingStu.getClassroom());
-      System.out.println("Teacher: " + matchingStu.getTFirstName() + " " + matchingStu.getTLastName());
+      System.out.println("Student: " matchingStu.getLastName() + ", " + matchingStu.getFirstName());
+      if (bus) {
+        System.out.println("Bus Route: " + matchingStu.getBus());
+      }
+      else {
+        System.out.println("Grade: " + matchingStu.getGrade());
+        System.out.println("Classroom: " + matchingStu.getClassroom());
+        System.out.println("Teacher: " + matchingStu.getTLastName() + ", " matchingStu.getTFirstName());
+      }
     }
   }
-  private static void searchByLastNameFindBus(String lastName) {
 
+  /*
+  * Given a teacher, find the list of students in his/her class
+  */
+  private static void searchByTeacher(String tLastName) {
+    ArrayList<Student> matchingStudents = new ArrayList<Student>();
+    for (Student stu: students) {
+      if (stu.getTLastName().equals(tLastName.toUpperCase())) {
+        matchingStudents.add(stu);
+      }
+    }
+
+    System.out.println("Students in " + tLastName + "'s class");
+    for (Student matchingStu: matchingStudents) {
+      System.out.println(matchingStu.getLasttName() + ", " + matchingStu.getFirstName());
+    }
+  }
+
+  /*
+  * Given a bus route, find the list of students who take it
+  */
+  private static void searchByBus(String bus) {
+    ArrayList<Student> matchingStudents = new ArrayList<Student>();
+    for (Student stu: students) {
+      if (stu.getBus() == Integer.parseInt(bus)) {
+        matchingStudents.add(stu);
+      }
+    }
+
+    System.out.println("Students who take bus route " + bus);
+    for (Student matchingStu: matchingStudents) {
+      System.out.println(matchingStu.getFirstName() + " " + matchingStu.getLastName());
+    }
+  }
+
+  /*
+  * Find all students at a specified grade level
+  */
+  private static void searchByGrade(String grade) {
+    ArrayList<Student> matchingStudents = new ArrayList<Student>();
+    for (Student stu: students) {
+      if (stu.getGrade() == Integer.parseInt(grade)) {
+        matchingStudents.add(stu);
+      }
+    }
+
+    System.out.println("Students who are in grade " + grade);
+    for (Student matchingStu: matchingStudents) {
+      System.out.println(matchingStu.getFirstName() + " " + matchingStu.getLastName());
+    }
   }
 }
