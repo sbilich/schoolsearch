@@ -25,6 +25,15 @@ public class Student {
       this.tlast = tlast;
       this.tfirst = tfirst;
   }
+  public Student(Student other) {
+    this.last = other.last;
+    this.first = other.first;
+    this.grade = other.grade;
+    this.bus = other.bus;
+    this.gpa = other.gpa;
+    this.tlast = other.tlast;
+    this.tfirst = other.tfirst; 
+  }
 
   public String getLastName() {
     return this.last;
