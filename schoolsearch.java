@@ -90,12 +90,12 @@ public class SchoolSearch {
     System.out.println("G[rade]: <number> [H[igh] | L[ow]]");
     System.out.println("A[verage]: <number>");
     System.out.println("I[nfo]");
-    System.out.println("Q[uit]");
+    System.out.println("Q[uit]\n");
   }
 
   /*
   * Continuously prompts the user for a search operation and performs the specified
-  * operation. 
+  * operation.
   */
   private static void initiateSearch() {
     Scanner sc = new Scanner(System.in);
@@ -103,33 +103,40 @@ public class SchoolSearch {
 
     while (sc.hasNext()) {
       userInput = sc.nextLine().split(" ");
-      char firstLetter = userInput[0].charAt(0);
 
-      switch (firstLetter) {
-        case 'S':
+      switch (userInput[0]) {
+        case "S:":
+        case "Student:":
           searchByLastName(userInput);
-            break;
-        case 'T':
+          break;
+        case "T:":
+        case "Teacher:":
             searchByTeacher(userInput[1]);
             break;
-        case 'B':
+        case "B:":
+        case "Bus:":
             searchByBus(userInput[1]);
             break;
-        case 'G':
+        case "G:":
+        case "Grade:":
             searchByGrade(userInput);
             break;
-        case 'A':
+        case "A:":
+        case "Average:":
             findAverage(userInput[1]);
             break;
-        case 'I':
+        case "I:":
+        case "Info:":
             getInfo();
             break;
-        case 'Q':
+        case "Q":
+        case "Quit":
             System.exit(0);
         default:
+            System.out.print("\n");
             break;
       }
-    System.out.println("\nChoose another search operation: ");
+    System.out.println("Choose another search operation: \n");
     }
   }
 
@@ -139,6 +146,7 @@ public class SchoolSearch {
   */
   private static void searchByLastName(String [] userInput) {
     String lastName = userInput[1];
+
     ArrayList<Student> matchingStudents = new ArrayList<Student>();
     for (Student stu: students) {
       if (stu.getLastName().equals(lastName.toUpperCase())) {
@@ -146,15 +154,26 @@ public class SchoolSearch {
       }
     }
 
-    for (Student matchingStu: matchingStudents) {
-      System.out.print(matchingStu.getLastName() + ", " + matchingStu.getFirstName() + " ");
-      if (userInput.length >= 3) {
-        System.out.println(matchingStu.getBus());
+    if (!matchingStudents.isEmpty()) {
+      for (Student matchingStu: matchingStudents) {
+
+        if (userInput.length >= 3) {
+          if (userInput[2].equals("B") || userInput[2].equals("Bus")) {
+            System.out.println("Student Name: " + matchingStu.getLastName() + ", " + matchingStu.getFirstName());
+            System.out.println("Bus Route: " + matchingStu.getBus() + "\n");
+          } else {
+            System.out.println("Expected \"B[us]\", got " + userInput[2] + "\n");
+          }
+        }
+        else {
+          System.out.println("Student Name: " + matchingStu.getLastName() + ", " + matchingStu.getFirstName());
+          System.out.println("Grade: " + matchingStu.getGrade());
+          System.out.println("Classroom: " + matchingStu.getClassroom());
+          System.out.println("Teacher Name: " + matchingStu.getTLastName() + ", " + matchingStu.getTFirstName() + "\n");
+        }
       }
-      else {
-        System.out.println(matchingStu.getGrade() + " " + matchingStu.getClassroom()
-              + " " + matchingStu.getTLastName() + ", " + matchingStu.getTFirstName());
-      }
+    } else {
+      System.out.print("No students were found matching the last name \"" + lastName + "\"\n\n");
     }
   }
 
@@ -163,14 +182,19 @@ public class SchoolSearch {
   */
   private static void searchByTeacher(String tLastName) {
     ArrayList<Student> matchingStudents = new ArrayList<Student>();
+
     for (Student stu: students) {
       if (stu.getTLastName().equals(tLastName.toUpperCase())) {
         matchingStudents.add(stu);
       }
     }
 
-    for (Student matchingStu: matchingStudents) {
-      System.out.println(matchingStu.getLastName() + ", " + matchingStu.getFirstName());
+    if (!matchingStudents.isEmpty()) {
+      for (Student matchingStu: matchingStudents) {
+        System.out.println("Student: " + matchingStu.getLastName() + ", " + matchingStu.getFirstName());
+      }
+    } else {
+        System.out.print("No teachers were found matching the last name \"" + tLastName + "\"\n\n");
     }
   }
 
@@ -185,9 +209,14 @@ public class SchoolSearch {
       }
     }
 
-    for (Student matchingStu: matchingStudents) {
-      System.out.println(matchingStu.getLastName() + ", " + matchingStu.getFirstName()
-            + " " + matchingStu.getGrade() + " " + matchingStu.getClassroom());
+    if (!matchingStudents.isEmpty()) {
+      for (Student matchingStu: matchingStudents) {
+        System.out.println("Student Name: " + matchingStu.getLastName() + ", " + matchingStu.getFirstName());
+        System.out.println("Grade: " + matchingStu.getGrade());
+        System.out.println("Classroom: " + matchingStu.getClassroom() + "\n");
+      }
+    } else {
+      System.out.print("No students were found with the bus route \"" + bus + "\"\n\n");
     }
   }
 
