@@ -1,0 +1,235 @@
+// CSC 365 Winter 2018
+// Lab 1-1 test suite
+
+// TC-1
+// Tests requirements R3, R4
+// short form command name, existing student
+// expected output:
+// "Student Name: COOKUS, XUAN
+//  Grade: 3
+//  Classroom: 107
+//  Teacher Name: FAFARD, ROCIO"
+
+S: COOKUS
+
+// TC-2
+// Tests requirements R3, R4
+// long form command name, non-existing student
+// expected output:
+// "No students were found matching the last name "cook""
+
+Student: COOK
+
+// TC-3
+// Tests requirements R3, R12
+// quit command
+// expected output: program terminates
+
+Q
+
+// TC-4
+// Tests requirements R3, R5
+// long form command name, existing student with bus flag
+// expected output:
+// "Student Name: COOKUS, XUAN
+//  Bus Route: 52"
+
+Student: COOKUS B
+
+// TC-5
+// Tests requirements R3, R6
+// long form command name, existing teacher
+// expected output:
+// "Student: LIBRANDI, TODD
+//
+//  Student: HAVIR, BOBBIE
+//
+//  Student: SARAO, DIEDRA
+//
+//  Student: VANCOTT, MIKE
+//
+//  Student: WICINSKY, TERESE
+//
+//  Student: KOZOLA, BUSTER
+//
+//  Student: MULLINGS, LEIGHANN
+//
+//  Student: BUSSMANN, BILLY
+//
+//  Student: BERBES, DICK
+//
+//  Student: MULGREW, RANDELL
+//
+//  Student: TOWLEY, LANE"
+
+Teacher: HAMER
+
+// TC-6
+// Tests requirements R3
+// non-existent command name
+// expected output:
+// "Unrecognized query, please try again."
+
+Teachr:
+
+// TC-7
+// Tests requirements R3, R6
+// short form command name, non-existing teacher
+// expected output:
+// "No teachers were found matching the last name "Ham""
+
+T: HAM
+
+// TC-8
+// Tests requirements R3, R7
+// long form command name, grade with no students
+// expected output:
+// "No students were found with the grade "0""
+
+Grade: 0
+
+// TC-9
+// Tests requirements R3, R7
+// short form command name, grade with students
+// expected output:
+// "Student Name: SAELEE, DANILO
+//
+//  Student Name: GARTH, JOHN"
+
+G: 1
+
+// TC-10
+// Tests requirements R3, R8
+// long form command name, existing bus
+// expected output:
+// "Student Name: SWEDLUND, SHARRI
+//  Grade: 3
+//  Classroom: 107
+//
+//  Student Name: ZAPPAVIGNA, ELLIOTT
+//  Grade: 6
+//  Classroom: 106
+//
+//  Student Name: SAENPHIMMACHA, NUMBERS
+//  Grade: 6
+//  Classroom: 111
+//
+//  Student Name: BOYTER, WAN
+//  Grade: 6
+//  Classroom: 102
+//
+//  Student Name: KOZOLA, BUSTER
+//  Grade: 2
+//  Classroom: 108
+//
+//  Student Name: DEMARTINI, DEWAYNE
+//  Grade: 6
+//  Classroom: 102
+//
+//  Student Name: BEX, TAMESHA
+//  Grade: 4
+//  Classroom: 105
+//
+//  Student Name: WERST, LEON
+//  Grade: 6
+//  Classroom: 111
+//
+//  Student Name: LAMKIN, TAMA
+//  Grade: 6
+//  Classroom: 111"
+
+Bus: 54
+
+// TC-11
+// Tests requirements R3, R8
+// short form command name, non-existent bus
+// expected output:
+// "No students were found with the bus route "106""
+
+B: 106
+
+// TC-12
+// Tests requirements R3, R9
+// short form command name, non-existent grade - high flag
+// expected output:
+// "No students were found with the grade "10""
+
+G: 10 High
+
+// TC-13
+// Tests requirements R3, R9
+// long form command name, existent grade - high flag
+// expected output:
+// "Student Name: SWEDLUND, SHARRI
+//  GPA: 3.24
+//  Teacher Name: FAFARD, ROCIO"
+
+Grade: 3 H
+
+// TC-14
+// Tests requirements R3, R9
+// short form command name, existent grade - low flag
+// expected output:
+// "Student Name: CIGANEK, MANIE
+//  GPA: 2.79
+//  Teacher Name: FAFARD, ROCIO"
+
+G: 3 Low
+
+// TC-15
+// Tests requirements R3, R9
+// short form command name, non-existent grade - low flag
+// expected output:
+// "No students were found with the grade "10""
+
+G: 10 L
+
+// TC-16
+// Tests requirements R3, R9
+// short form command name, existent grade - non-existent flag
+// expected output:
+// "Unrecognized flag "HI""
+
+G: 3 Hi
+
+// TC-17
+// Tests requirements R3, R10
+// short form command name, existent grade
+// expected output:
+// "Average for grade 3: 3.048888888888889"
+
+A: 3
+
+// TC-18
+// Tests requirements R3, R9
+// long form command name, non-existent grade
+// expected output:
+// "No students were found with the grade "10""
+
+Average: 10
+
+// TC-19
+// Tests requirements R3, R11
+// long form command name, info
+// expected output:
+// "1: 2
+//  2: 13
+//  3: 9
+//  4: 15
+//  5: 0
+//  6: 21"
+
+Info
+
+// TC-20
+// Tests requirements R13, E1
+// non-existent file "students.txt"
+// expected output:
+// "Failed to open file: java.io.FileNotFoundException:
+//  students.txt (No such file or directory)"
+
+// TC-21
+// Tests requirements E1
+// incorrectly formatted file "students.txt"
+// expected output:
+// "Invalid students file: InvalidStudentException: incorrect number of fields"

@@ -63,7 +63,7 @@ public class SchoolSearch {
     }
     catch (InvalidStudentException | NumberFormatException e)
     {
-      System.out.println("Invalid Student information: " + e);
+      System.out.println("Invalid students file: " + e);
       System.exit(0);
     }
     catch (FileNotFoundException e)
@@ -96,11 +96,11 @@ public class SchoolSearch {
           break;
         case "T:":
         case "Teacher:":
-            SearchUtils.searchByTeacher(userInput[1], students);
+            SearchUtils.searchByTeacher(userInput, students);
             break;
         case "B:":
         case "Bus:":
-            SearchUtils.searchByBus(userInput[1], students);
+            SearchUtils.searchByBus(userInput, students);
             break;
         case "G:":
         case "Grade:":
@@ -108,17 +108,17 @@ public class SchoolSearch {
             break;
         case "A:":
         case "Average:":
-            SearchUtils.findAverage(userInput[1], students);
+            SearchUtils.findAverage(userInput, students);
             break;
-        case "I:":
-        case "Info:":
+        case "I":
+        case "Info":
             SearchUtils.getInfo(students);
             break;
         case "Q":
         case "Quit":
             System.exit(0);
         default:
-            System.out.println("Unrecoginized query, please try again.\n");
+            System.out.println("Unrecognized query, please try again.\n");
             break;
       }
       System.out.println("Choose another search operation: \n");

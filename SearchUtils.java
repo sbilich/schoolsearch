@@ -6,8 +6,12 @@ public class SearchUtils {
     * Given a student's last name, find the student's grade, classroom and teacher
     * or bus route.
     */
-    public static void searchByLastName(String [] userInput,
+    public static void searchByLastName(String[] userInput,
      ArrayList<Student> students) {
+      if (userInput.length < 2) {
+        System.out.println("Usage: \"S[tudent]: <lastName> B[us]\"\n");
+        return;
+      }
       String lastName = userInput[1];
 
       ArrayList<Student> matchingStudents = new ArrayList<Student>();
@@ -48,8 +52,14 @@ public class SearchUtils {
     /*
     * Given a teacher, find the list of students in his/her class
     */
-    public static void searchByTeacher(String tLastName,
+    public static void searchByTeacher(String[] input,
      ArrayList<Student> students) {
+      if (input.length < 2) {
+        System.out.println("Usage: \"T[eacher]: <lastName>\"\n");
+        return;
+      }
+
+      String tLastName = input[1];
       ArrayList<Student> matchingStudents = new ArrayList<Student>();
 
       for (Student stu: students) {
@@ -61,7 +71,7 @@ public class SearchUtils {
       if (!matchingStudents.isEmpty()) {
         for (Student matchingStu: matchingStudents) {
           System.out.println("Student: " + matchingStu.getLastName()
-            + ", " + matchingStu.getFirstName());
+            + ", " + matchingStu.getFirstName() + "\n");
         }
       } else {
           System.out.println("No teachers were found matching the last name \""
@@ -72,7 +82,14 @@ public class SearchUtils {
     /*
     * Given a bus route, find the list of students who take it
     */
-    public static void searchByBus(String bus, ArrayList<Student> students) {
+    public static void searchByBus(String[] userInput,
+     ArrayList<Student> students) {
+      if (userInput.length < 2) {
+        System.out.println("Usage: \"B[us]: <Number>\"\n");
+        return;
+      }
+
+      String bus = userInput[1];
       ArrayList<Student> matchingStudents = new ArrayList<Student>();
       for (Student stu: students) {
         if (stu.getBus() == Integer.parseInt(bus)) {
@@ -96,8 +113,13 @@ public class SearchUtils {
     /*
     * Find all students at a specified grade level
     */
-    public static void searchByGrade(String [] userInput,
+    public static void searchByGrade(String[] userInput,
      ArrayList<Student> students) {
+      if (userInput.length < 2) {
+        System.out.println("Usage: \"G[rade]: <Number>\"\n");
+        return;
+      }
+
       String grade = userInput[1];
       ArrayList<Student> matchingStudents = findStudentsInGrade(grade, students);
 
@@ -115,12 +137,13 @@ public class SearchUtils {
       else {
         String gpaRank = userInput[2].toUpperCase();
         if (gpaRank.equals("HIGH") || gpaRank.equals("H")) {
-          findHighestGpa(matchingStudents);
+          findHighestGpa(matchingStudents, grade);
         }
         else if (gpaRank.equals("LOW") || gpaRank.equals("L")) {
-          findLowestGpa(matchingStudents);
+          findLowestGpa(matchingStudents, grade);
         } else {
-
+          System.out.println("Unrecognized flag \""
+            + gpaRank + "\"\n");
         }
       }
     }
@@ -142,52 +165,79 @@ public class SearchUtils {
     /*
     * Finds student with the highest gpa in a specified grade
     */
-    public static void findHighestGpa(ArrayList<Student> matchingStudents) {
-      Student highestGpaStu = matchingStudents.get(0);
-      for (Student stu: matchingStudents) {
-        if (stu.getGpa() > highestGpaStu.getGpa())
-          highestGpaStu = new Student(stu);
+    public static void findHighestGpa(ArrayList<Student> matchingStudents,
+     String grade) {
+      if (!matchingStudents.isEmpty()) {
+        Student highestGpaStu = matchingStudents.get(0);
+        for (Student stu: matchingStudents) {
+          if (stu.getGpa() > highestGpaStu.getGpa())
+            highestGpaStu = stu;
+        }
+
+        printExtremeGpaStu(highestGpaStu);
+      } else {
+        System.out.println("No students were found with the grade \""
+          + grade + "\"\n");
       }
-      printExtremeGpaStu(highestGpaStu);
     }
 
     /*
     * Finds student with the lowest gpa in a specified grade
     */
-    public static void findLowestGpa(ArrayList<Student> matchingStudents) {
+    public static void findLowestGpa(ArrayList<Student> matchingStudents,
+     String grade) {
+      if (!matchingStudents.isEmpty()) {
+        Student lowestGpaStu = matchingStudents.get(0);
+        for (Student stu: matchingStudents) {
+          if (stu.getGpa() < lowestGpaStu.getGpa())
+            lowestGpaStu = stu;
+        }
 
-      Student lowestGpaStu = matchingStudents.get(0);
-      for (Student stu: matchingStudents) {
-        if (stu.getGpa() < lowestGpaStu.getGpa())
-          lowestGpaStu = new Student(stu);
+        printExtremeGpaStu(lowestGpaStu);
+      } else {
+        System.out.println("No students were found with the grade \""
+          + grade + "\"\n");
       }
-      printExtremeGpaStu(lowestGpaStu);
     }
 
     /*
     * Prints out information about the student with the highest or lowest GPA
     */
     public static void printExtremeGpaStu(Student stu) {
-      System.out.println(stu.getLastName() + ", " + stu.getFirstName()
-            + " " + stu.getGpa() + " " + stu.getTLastName() + ", " +
-            stu.getTFirstName());
+      System.out.println("Student Name: " + stu.getLastName()
+        + ", " + stu.getFirstName());
+      System.out.println("GPA: " + stu.getGpa());
+      System.out.println("Teacher Name: " + stu.getTLastName()
+        + ", " + stu.getTFirstName() + "\n");
     }
 
     /*
     * Computes the average GPA for the specified grade
     */
-    public static void findAverage(String grade, ArrayList<Student> students) {
-      ArrayList<Student> matchingStudents = findStudentsInGrade(grade, students);
-      double total = 0, average = 0;
-
-      /* find the total gpa for all students in specified grade */
-      for (Student stu : matchingStudents) {
-        total += stu.getGpa();
+    public static void findAverage(String[] input, ArrayList<Student> students) {
+      if (input.length < 2) {
+        System.out.println("Usage: \"A[verage]: <Number>\"\n");
+        return;
       }
-      //TODO: should the average value be rounded?
-      average = total / matchingStudents.size();
 
-      System.out.println(grade + " " + average);
+      String grade = input[1];
+      ArrayList<Student> matchingStudents = findStudentsInGrade(grade, students);
+
+      if (!matchingStudents.isEmpty()) {
+        double total = 0, average = 0;
+
+        /* find the total gpa for all students in specified grade */
+        for (Student stu : matchingStudents) {
+          total += stu.getGpa();
+        }
+        //TODO: should the average value be rounded?
+        average = total / matchingStudents.size();
+
+        System.out.println("Average for grade " + grade + ": " + average + "\n");
+      } else {
+        System.out.println("No students were found with the grade \""
+          + grade + "\"\n");
+      }
     }
 
     /*
@@ -200,6 +250,7 @@ public class SearchUtils {
           findStudentsInGrade(Integer.toString(i), students).size();
         System.out.println(i + ": " + numStudentsInGrade);
       }
+      System.out.print("\n");
     }
 
   /*
