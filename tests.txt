@@ -21,13 +21,6 @@ S: COOKUS
 Student: COOK
 
 // TC-3
-// Tests requirements R3, R12
-// quit command
-// expected output: program terminates
-
-Q
-
-// TC-4
 // Tests requirements R3, R5
 // long form command name, existing student with bus flag
 // expected output:
@@ -36,7 +29,7 @@ Q
 
 Student: COOKUS B
 
-// TC-5
+// TC-4
 // Tests requirements R3, R6
 // long form command name, existing teacher
 // expected output:
@@ -64,7 +57,7 @@ Student: COOKUS B
 
 Teacher: HAMER
 
-// TC-6
+// TC-5
 // Tests requirements R3
 // non-existent command name
 // expected output:
@@ -72,7 +65,7 @@ Teacher: HAMER
 
 Teachr:
 
-// TC-7
+// TC-6
 // Tests requirements R3, R6
 // short form command name, non-existing teacher
 // expected output:
@@ -80,7 +73,7 @@ Teachr:
 
 T: HAM
 
-// TC-8
+// TC-7
 // Tests requirements R3, R7
 // long form command name, grade with no students
 // expected output:
@@ -88,7 +81,7 @@ T: HAM
 
 Grade: 0
 
-// TC-9
+// TC-8
 // Tests requirements R3, R7
 // short form command name, grade with students
 // expected output:
@@ -98,49 +91,61 @@ Grade: 0
 
 G: 1
 
-// TC-10
+// TC-9
 // Tests requirements R3, R8
 // long form command name, existing bus
 // expected output:
-// "Student Name: SWEDLUND, SHARRI
-//  Grade: 3
-//  Classroom: 107
-//
-//  Student Name: ZAPPAVIGNA, ELLIOTT
-//  Grade: 6
-//  Classroom: 106
-//
-//  Student Name: SAENPHIMMACHA, NUMBERS
-//  Grade: 6
-//  Classroom: 111
-//
-//  Student Name: BOYTER, WAN
-//  Grade: 6
-//  Classroom: 102
-//
-//  Student Name: KOZOLA, BUSTER
-//  Grade: 2
-//  Classroom: 108
-//
-//  Student Name: DEMARTINI, DEWAYNE
-//  Grade: 6
-//  Classroom: 102
-//
-//  Student Name: BEX, TAMESHA
+// "Student Name: OGAS, ERVIN
 //  Grade: 4
 //  Classroom: 105
 //
-//  Student Name: WERST, LEON
+//  Student Name: GUICE, CODI
+//  Grade: 4
+//  Classroom: 112
+//
+//  Student Name: BREVO, JANNETTE
 //  Grade: 6
 //  Classroom: 111
 //
-//  Student Name: LAMKIN, TAMA
-//  Grade: 6
-//  Classroom: 111"
+//  Student Name: VANCOTT, MIKE
+//  Grade: 2
+//  Classroom: 108
+//
+//  Student Name: GLOR, HUNG
+//  Grade: 4
+//  Classroom: 112
+//
+//  Student Name: SAELEE, DANILO
+//  Grade: 1
+//  Classroom: 103
+//
+//  Student Name: GUM, NOAH
+//  Grade: 4
+//  Classroom: 112
+//
+//  Student Name: BERBES, DICK
+//  Grade: 2
+//  Classroom: 108
+//
+//  Student Name: MULGREW, RANDELL
+//  Grade: 2
+//  Classroom: 108
+//
+//  Student Name: NOVICK, ROLLAND
+//  Grade: 4
+//  Classroom: 112
+//
+//  Student Name: THEUNISSEN, GRACE
+//  Grade: 3
+//  Classroom: 110
+//
+//  Student Name: TOWLEY, LANE
+//  Grade: 2
+//  Classroom: 108"
 
 Bus: 54
 
-// TC-11
+// TC-10
 // Tests requirements R3, R8
 // short form command name, non-existent bus
 // expected output:
@@ -148,7 +153,7 @@ Bus: 54
 
 B: 106
 
-// TC-12
+// TC-11
 // Tests requirements R3, R9
 // short form command name, non-existent grade - high flag
 // expected output:
@@ -156,7 +161,7 @@ B: 106
 
 G: 10 High
 
-// TC-13
+// TC-12
 // Tests requirements R3, R9
 // long form command name, existent grade - high flag
 // expected output:
@@ -166,7 +171,7 @@ G: 10 High
 
 Grade: 3 H
 
-// TC-14
+// TC-13
 // Tests requirements R3, R9
 // short form command name, existent grade - low flag
 // expected output:
@@ -176,7 +181,7 @@ Grade: 3 H
 
 G: 3 Low
 
-// TC-15
+// TC-14
 // Tests requirements R3, R9
 // short form command name, non-existent grade - low flag
 // expected output:
@@ -184,7 +189,7 @@ G: 3 Low
 
 G: 10 L
 
-// TC-16
+// TC-15
 // Tests requirements R3, R9
 // short form command name, existent grade - non-existent flag
 // expected output:
@@ -192,7 +197,7 @@ G: 10 L
 
 G: 3 Hi
 
-// TC-17
+// TC-16
 // Tests requirements R3, R10
 // short form command name, existent grade
 // expected output:
@@ -200,7 +205,7 @@ G: 3 Hi
 
 A: 3
 
-// TC-18
+// TC-17
 // Tests requirements R3, R9
 // long form command name, non-existent grade
 // expected output:
@@ -208,7 +213,7 @@ A: 3
 
 Average: 10
 
-// TC-19
+// TC-18
 // Tests requirements R3, R11
 // long form command name, info
 // expected output:
@@ -221,15 +226,22 @@ Average: 10
 
 Info
 
-// TC-20
+// TC-19
 // Tests requirements R13, E1
 // non-existent file "students.txt"
 // expected output:
 // "Failed to open file: java.io.FileNotFoundException:
 //  students.txt (No such file or directory)"
 
-// TC-21
+// TC-20
 // Tests requirements E1
 // incorrectly formatted file "students.txt"
 // expected output:
 // "Invalid students file: InvalidStudentException: incorrect number of fields"
+
+// TC-21
+// Tests requirements R3, R12
+// quit command
+// expected output: program terminates
+
+Q

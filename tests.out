@@ -1,0 +1,204 @@
+Choose to search from the following options:
+S[tudent]: <lastname> [B[us]]
+T[eacher]: <lastname>
+B[us]: <number>
+G[rade]: <number> [H[igh] | L[ow]]
+A[verage]: <number>
+I[nfo]
+Q[uit]
+
+S: COOKUS
+Student Name: COOKUS, XUAN
+Grade: 3
+Classroom: 107
+Teacher Name: FAFARD, ROCIO
+
+Choose another search operation:
+
+Student: COOK
+No students were found matching the last name "COOK"
+
+Choose another search operation:
+
+Student: COOKUS B
+Student Name: COOKUS, XUAN
+Bus Route: 52
+
+Choose another search operation:
+
+Teacher: HAMER
+Student: LIBRANDI, TODD
+
+Student: HAVIR, BOBBIE
+
+Student: SARAO, DIEDRA
+
+Student: VANCOTT, MIKE
+
+Student: WICINSKY, TERESE
+
+Student: KOZOLA, BUSTER
+
+Student: MULLINGS, LEIGHANN
+
+Student: BUSSMANN, BILLY
+
+Student: BERBES, DICK
+
+Student: MULGREW, RANDELL
+
+Student: TOWLEY, LANE
+
+Choose another search operation:
+
+Teachr:
+Unrecognized query, please try again.
+
+Choose another search operation:
+
+T: HAM
+No teachers were found matching the last name "HAM"
+
+Choose another search operation:
+
+Grade: 0
+Unrecognized query, please try again.
+
+Choose another search operation:
+
+No students were found with the grade "0"
+
+Choose another search operation:
+
+G: 1
+Student Name: SAELEE, DANILO
+
+Student Name: GARTH, JOHN
+
+Choose another search operation:
+
+Bus: 54
+Student Name: OGAS, ERVIN
+Grade: 4
+Classroom: 105
+
+Student Name: GUICE, CODI
+Grade: 4
+Classroom: 112
+
+Student Name: BREVO, JANNETTE
+Grade: 6
+Classroom: 111
+
+Student Name: VANCOTT, MIKE
+Grade: 2
+Classroom: 108
+
+Student Name: GLOR, HUNG
+Grade: 4
+Classroom: 112
+
+Student Name: SAELEE, DANILO
+Grade: 1
+Classroom: 103
+
+Student Name: GUM, NOAH
+Grade: 4
+Classroom: 112
+
+Student Name: BERBES, DICK
+Grade: 2
+Classroom: 108
+
+Student Name: MULGREW, RANDELL
+Grade: 2
+Classroom: 108
+
+Student Name: NOVICK, ROLLAND
+Grade: 4
+Classroom: 112
+
+Student Name: THEUNISSEN, GRACE
+Grade: 3
+Classroom: 110
+
+Student Name: TOWLEY, LANE
+Grade: 2
+Classroom: 108
+
+Choose another search operation:
+
+B: 106
+No students were found with the bus route "106"
+
+Choose another search operation:
+
+G: 10 High
+No students were found with the grade "10"
+
+Choose another search operation:
+
+Grade: 3 H
+Student Name: SWEDLUND, SHARRI
+GPA: 3.24
+Teacher Name: FAFARD, ROCIO
+
+Choose another search operation:
+
+G: 3 Low
+Student Name: CIGANEK, MANIE
+GPA: 2.79
+Teacher Name: FAFARD, ROCIO
+
+Choose another search operation:
+
+G: 10 L
+No students were found with the grade "10"
+
+Choose another search operation:
+
+Grade: 3 H
+Student Name: SWEDLUND, SHARRI
+GPA: 3.24
+Teacher Name: FAFARD, ROCIO
+
+Choose another search operation:
+
+G: 3 Low
+Student Name: CIGANEK, MANIE
+GPA: 2.79
+Teacher Name: FAFARD, ROCIO
+
+Choose another search operation:
+
+G: 10 L
+No students were found with the grade "10"
+
+Choose another search operation:
+
+G: 3 Hi
+Unrecognized flag "HI"
+
+Choose another search operation:
+
+A: 3
+Average for grade 3: 3.048888888888889
+
+Choose another search operation:
+
+Average: 10
+No students were found with the grade "10"
+
+Choose another search operation:
+
+Info
+1: 2
+2: 13
+3: 9
+4: 15
+5: 0
+6: 21
+
+Choose another search operation:
+
+Q
