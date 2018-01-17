@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class SchoolSearch {
+public class schoolsearch {
   public static ArrayList<Student> students;
   public static final String FILENAME = "students.txt";
   public static final int STUDENT_SIZE = 8;
@@ -88,7 +88,6 @@ public class SchoolSearch {
 
     while (sc.hasNext()) {
       userInput = sc.nextLine().split(" ");
-
       switch (userInput[0]) {
         case "S:":
         case "Student:":
