@@ -1,5 +1,6 @@
 // CSC 365 Winter 2018
 // Lab 1-1 test suite
+//Sara Bilich and Makenna Johnstone
 
 // TC-1
 // Tests requirements R3, R4
