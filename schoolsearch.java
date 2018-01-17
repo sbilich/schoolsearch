@@ -10,11 +10,13 @@ import java.io.FileNotFoundException;
 
 public class schoolsearch {
   public static ArrayList<Student> students;
+  public static ArrayList<Teacher> teachers;
   public static final String FILENAME = "students.txt";
   public static final int STUDENT_SIZE = 8;
 
   public static void main(String args[]) {
     parseStudents();
+    parseTeachers();
     SearchUtils.promptSearchOptions();
     initiateSearch();
   }
