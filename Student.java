@@ -15,15 +15,13 @@ public class Student {
   String tfirst;
 
   public Student(String last, String first, int grade, int classroom, int bus,
-    double gpa, String tlast, String tfirst) {
+    double gpa) {
       this.last = last;
       this.first = first;
       this.grade = grade;
       this.classroom = classroom;
       this.bus = bus;
       this.gpa = gpa;
-      this.tlast = tlast;
-      this.tfirst = tfirst;
   }
   public Student(Student other) {
     this.last = other.last;
@@ -32,8 +30,6 @@ public class Student {
     this.classroom = other.classroom;
     this.bus = other.bus;
     this.gpa = other.gpa;
-    this.tlast = other.tlast;
-    this.tfirst = other.tfirst;
   }
 
   public String getLastName() {
@@ -58,14 +54,6 @@ public class Student {
 
   public double getGpa() {
     return this.gpa;
-  }
-
-  public String getTLastName() {
-    return this.tlast;
-  }
-
-  public String getTFirstName() {
-    return this.tfirst;
   }
 
   public String toString() {

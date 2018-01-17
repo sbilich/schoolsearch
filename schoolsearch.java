@@ -10,11 +10,15 @@ import java.io.FileNotFoundException;
 
 public class schoolsearch {
   public static ArrayList<Student> students;
-  public static final String FILENAME = "students.txt";
-  public static final int STUDENT_SIZE = 8;
+  public static ArrayList<Teacher> teachers;
+  public static final String FILENAME_STUDENTS = "list.txt";
+  public static final String FILENAME_TEACHERS = "teachers.txt";
+  public static final int STUDENT_SIZE = 6;
+  public static final int TEACHER_SIZE = 3;
 
   public static void main(String args[]) {
     parseStudents();
+    parseTeachers();
     SearchUtils.promptSearchOptions();
     initiateSearch();
   }
@@ -26,7 +30,7 @@ public class schoolsearch {
   private static void parseStudents() {
     students = new ArrayList<Student>();
 
-    File file = new File(FILENAME);
+    File file = new File(FILENAME_STUDENTS);
 
     try
     {
@@ -51,11 +55,9 @@ public class schoolsearch {
         int classroom = Integer.parseInt(strs[3]);
         int bus = Integer.parseInt(strs[4]);
         double gpa = Double.parseDouble(strs[5]);
-        String tlast = strs[6];
-        String tfirst = strs[7];
 
         Student student = new Student(last, first, grade, classroom, bus,
-          gpa, tlast, tfirst);
+          gpa);
         students.add(student);
       }
 
@@ -64,6 +66,59 @@ public class schoolsearch {
     catch (InvalidStudentException | NumberFormatException e)
     {
       System.out.println("Invalid students file: " + e);
+      System.exit(0);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("Failed to open file: " + e);
+      System.exit(0);
+    }
+    catch (Exception e)
+    {
+      System.out.println("Scanning failed with exception " + e);
+      System.exit(0);
+    }
+  }
+  /*
+  * Parses in the students contained within FILENAME and
+  * intializes |students|.
+  */
+  private static void parseTeachers() {
+    teachers = new ArrayList<Teacher>();
+
+    File file = new File(FILENAME_TEACHERS);
+
+    try
+    {
+      Scanner sc = new Scanner(file);
+
+      String line = null;
+
+      while (sc.hasNextLine())
+      {
+        line = sc.nextLine();
+
+        String[] strs = line.split(",");
+
+        /* parse in teacher object */
+        if (strs.length != TEACHER_SIZE) {
+          throw new InvalidInputException("incorrect number of fields");
+        }
+
+        String last = strs[0];
+        String first = strs[1];
+        int classroom = Integer.parseInt(strs[2].trim());
+        System.out.println(classroom); 
+
+        Teacher teacher = new Teacher(last, first, classroom);
+        teachers.add(teacher);
+      }
+
+      sc.close();
+    }
+    catch (InvalidInputException | NumberFormatException e)
+    {
+      System.out.println("Invalid teachers file: " + e);
       System.exit(0);
     }
     catch (FileNotFoundException e)
