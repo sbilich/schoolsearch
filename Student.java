@@ -29,10 +29,11 @@ public class Student {
     this.last = other.last;
     this.first = other.first;
     this.grade = other.grade;
+    this.classroom = other.classroom;
     this.bus = other.bus;
     this.gpa = other.gpa;
     this.tlast = other.tlast;
-    this.tfirst = other.tfirst; 
+    this.tfirst = other.tfirst;
   }
 
   public String getLastName() {
