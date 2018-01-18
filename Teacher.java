@@ -3,6 +3,8 @@
 * @date 1/8/18
 */
 
+import java.util.ArrayList;
+
 public class Teacher {
 
   String last;
@@ -34,5 +36,18 @@ public class Teacher {
 
   public String toString() {
     return this.last + " " + this.first + " " + this.classroom;
+  }
+
+  public static Teacher findTeacher(String name, ArrayList<Teacher> lis) {
+    Teacher teacher = null;
+
+    for (Teacher t : lis) {
+      if (t.getLastName().equals(name)) {
+        teacher = t;
+        break;
+      }
+    }
+
+    return teacher;
   }
 }

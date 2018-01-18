@@ -1,3 +1,10 @@
+/*
+* @author Sara Bilich and Makenna Johnstone
+*
+* This class contains functions that allow arrays of Student and Teacher objects
+* to be queried.
+*/
+
 import java.util.ArrayList;
 
 public class SearchUtils {
@@ -7,7 +14,7 @@ public class SearchUtils {
     * or bus route.
     */
     public static void searchByLastName(String[] userInput,
-     ArrayList<Student> students) {
+      ArrayList<Teacher> teachers, ArrayList<Student> students) {
       if (userInput.length < 2) {
         System.out.println("Usage: \"S[tudent]: <lastName> B[us]\"\n");
         return;
@@ -22,25 +29,33 @@ public class SearchUtils {
       }
 
       if (!matchingStudents.isEmpty()) {
-        for (Student matchingStu: matchingStudents) {
-
-          if (userInput.length >= 3) {
-            if (userInput[2].equals("B") || userInput[2].equals("Bus")) {
+        if (userInput.length >= 3) {
+          if (userInput[2].equals("B") || userInput[2].equals("Bus")) {
+            for (Student matchingStu: matchingStudents) {
               System.out.println("Student Name: " + matchingStu.getLastName()
                 + ", " + matchingStu.getFirstName());
               System.out.println("Bus Route: " + matchingStu.getBus() + "\n");
-            } else {
-              System.out.println("Expected \"B[us]\", got "
-                + userInput[2] + "\n");
             }
+          } else {
+            System.out.println("Expected \"B[us]\", got "
+              + userInput[2] + "\n");
           }
-          else {
+        }
+        else {
+          for (Student matchingStu: matchingStudents) {
+            Teacher teacher = matchingStu.findTeacher(teachers);
+            if (teacher == null) {
+              System.out.println("No teacher found for"
+              + " student with last name" + matchingStu.getLastName() + "\n");
+              return;
+            }
+
             System.out.println("Student Name: " + matchingStu.getLastName() + ", "
               + matchingStu.getFirstName());
             System.out.println("Grade: " + matchingStu.getGrade());
             System.out.println("Classroom: " + matchingStu.getClassroom());
-            System.out.println("Teacher Name: " + matchingStu.getTLastName()
-              + ", " + matchingStu.getTFirstName() + "\n");
+            System.out.println("Teacher Name: " + teacher.getLastName()
+              + ", " + teacher.getFirstName() + "\n");
           }
         }
       } else {
@@ -53,17 +68,21 @@ public class SearchUtils {
     * Given a teacher, find the list of students in his/her class
     */
     public static void searchByTeacher(String[] input,
-     ArrayList<Student> students) {
+     ArrayList<Teacher> teachers, ArrayList<Student> students) {
       if (input.length < 2) {
         System.out.println("Usage: \"T[eacher]: <lastName>\"\n");
         return;
       }
 
       String tLastName = input[1];
+      Teacher teacher = Teacher.findTeacher(tLastName, teachers);
+      if (teacher == null) { System.out.println("No teachers were found " +
+      "matching the last name \"" + tLastName + "\"\n"); return; }
+
       ArrayList<Student> matchingStudents = new ArrayList<Student>();
 
       for (Student stu: students) {
-        if (stu.getTLastName().equals(tLastName.toUpperCase())) {
+        if (teacher.getClassroom() == stu.getClassroom()) {
           matchingStudents.add(stu);
         }
       }
@@ -74,8 +93,8 @@ public class SearchUtils {
             + ", " + matchingStu.getFirstName() + "\n");
         }
       } else {
-          System.out.println("No teachers were found matching the last name \""
-            + tLastName + "\"\n");
+          System.out.println("No students were found with a teacher "
+          + "matching the last name \"" + tLastName + "\"\n");
       }
     }
 
@@ -114,7 +133,7 @@ public class SearchUtils {
     * Find all students at a specified grade level
     */
     public static void searchByGrade(String[] userInput,
-     ArrayList<Student> students) {
+     ArrayList<Teacher> teachers, ArrayList<Student> students) {
       if (userInput.length < 2) {
         System.out.println("Usage: \"G[rade]: <Number>\"\n");
         return;
@@ -137,10 +156,10 @@ public class SearchUtils {
       else {
         String gpaRank = userInput[2].toUpperCase();
         if (gpaRank.equals("HIGH") || gpaRank.equals("H")) {
-          findHighestGpa(matchingStudents, grade);
+          findHighestGpa(matchingStudents, teachers, grade);
         }
         else if (gpaRank.equals("LOW") || gpaRank.equals("L")) {
-          findLowestGpa(matchingStudents, grade);
+          findLowestGpa(matchingStudents, teachers, grade);
         } else {
           System.out.println("Unrecognized flag \""
             + gpaRank + "\"\n");
@@ -166,7 +185,7 @@ public class SearchUtils {
     * Finds student with the highest gpa in a specified grade
     */
     public static void findHighestGpa(ArrayList<Student> matchingStudents,
-     String grade) {
+     ArrayList<Teacher> teachers, String grade) {
       if (!matchingStudents.isEmpty()) {
         Student highestGpaStu = matchingStudents.get(0);
         for (Student stu: matchingStudents) {
@@ -174,7 +193,7 @@ public class SearchUtils {
             highestGpaStu = stu;
         }
 
-        printExtremeGpaStu(highestGpaStu);
+        printExtremeGpaStu(highestGpaStu, teachers);
       } else {
         System.out.println("No students were found with the grade \""
           + grade + "\"\n");
@@ -185,7 +204,7 @@ public class SearchUtils {
     * Finds student with the lowest gpa in a specified grade
     */
     public static void findLowestGpa(ArrayList<Student> matchingStudents,
-     String grade) {
+     ArrayList<Teacher> teachers, String grade) {
       if (!matchingStudents.isEmpty()) {
         Student lowestGpaStu = matchingStudents.get(0);
         for (Student stu: matchingStudents) {
@@ -193,7 +212,7 @@ public class SearchUtils {
             lowestGpaStu = stu;
         }
 
-        printExtremeGpaStu(lowestGpaStu);
+        printExtremeGpaStu(lowestGpaStu, teachers);
       } else {
         System.out.println("No students were found with the grade \""
           + grade + "\"\n");
@@ -203,12 +222,20 @@ public class SearchUtils {
     /*
     * Prints out information about the student with the highest or lowest GPA
     */
-    public static void printExtremeGpaStu(Student stu) {
+    public static void printExtremeGpaStu(Student stu,
+     ArrayList<Teacher> teachers) {
+      Teacher t = stu.findTeacher(teachers);
+      if (t == null) {
+        System.out.println("No teacher found for"
+        + " student with last name" + stu.getLastName() + "\n");
+        return;
+      }
+
       System.out.println("Student Name: " + stu.getLastName()
         + ", " + stu.getFirstName());
       System.out.println("GPA: " + stu.getGpa());
-      System.out.println("Teacher Name: " + stu.getTLastName()
-        + ", " + stu.getTFirstName() + "\n");
+      System.out.println("Teacher Name: " + t.getLastName()
+        + ", " + t.getFirstName() + "\n");
     }
 
     /*

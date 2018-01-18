@@ -146,11 +146,11 @@ public class schoolsearch {
       switch (userInput[0]) {
         case "S:":
         case "Student:":
-          SearchUtils.searchByLastName(userInput, students);
+          SearchUtils.searchByLastName(userInput, teachers, students);
           break;
         case "T:":
         case "Teacher:":
-            SearchUtils.searchByTeacher(userInput, students);
+            SearchUtils.searchByTeacher(userInput, teachers, students);
             break;
         case "B:":
         case "Bus:":
@@ -158,7 +158,7 @@ public class schoolsearch {
             break;
         case "G:":
         case "Grade:":
-            SearchUtils.searchByGrade(userInput, students);
+            SearchUtils.searchByGrade(userInput, teachers, students);
             break;
         case "A:":
         case "Average:":

@@ -3,6 +3,8 @@
 * @date 1/8/18
 */
 
+import java.util.ArrayList;
+
 public class Student {
 
   String last;
@@ -23,6 +25,7 @@ public class Student {
       this.bus = bus;
       this.gpa = gpa;
   }
+
   public Student(Student other) {
     this.last = other.last;
     this.first = other.first;
@@ -58,5 +61,22 @@ public class Student {
 
   public String toString() {
     return this.last + " " + this.first + " " + this.grade + " " + this.classroom + " " + this.bus + " " + this.gpa + " " + this.tlast + " " + this.tfirst;
+  }
+
+  /*
+  * Returns the teacher that teaches the student or returns null
+  * if the student's teacher isn't in |lis|.
+  */
+  public Teacher findTeacher(ArrayList<Teacher> lis) {
+    Teacher teacher = null;
+
+    for (Teacher t : lis) {
+      if (t.getClassroom() == this.classroom) {
+        teacher = t;
+        break;
+      }
+    }
+
+    return teacher;
   }
 }
