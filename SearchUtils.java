@@ -6,6 +6,8 @@
 */
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SearchUtils {
 
@@ -154,18 +156,49 @@ public class SearchUtils {
       }
     }
     else {
-      String gpaRank = userInput[2].toUpperCase();
-      if (gpaRank.equals("HIGH") || gpaRank.equals("H")) {
+      String flag = userInput[2].toUpperCase();
+      if (flag.equals("HIGH") || flag.equals("H")) {
         findHighestGpa(matchingStudents, teachers, grade);
       }
-      else if (gpaRank.equals("LOW") || gpaRank.equals("L")) {
+      else if (flag.equals("LOW") || flag.equals("L")) {
         findLowestGpa(matchingStudents, teachers, grade);
+      } else if (flag.equals("TEACHER") || flag.equals("T")) {
+        findTeachersForGrade(students, teachers, grade);
       } else {
         System.out.println("Unrecognized flag \""
-          + gpaRank + "\"\n");
+          + flag + "\"\n");
       }
     }
   }
+
+  /*
+  * Finds and prints out all teachers that teach |grade|.
+  */
+  public static void findTeachersForGrade(ArrayList<Student> students,
+   ArrayList<Teacher> teachers, String grade) {
+     ArrayList<Student> grade_students = findStudentsInGrade(grade, students);
+     Set<Teacher> matched = new HashSet<Teacher>();
+
+     for (Student s : grade_students) {
+       int num = s.getClassroom();
+
+       for (Teacher t : teachers) {
+         if (t.getClassroom() == num) {
+           matched.add(t);
+         }
+       }
+     }
+
+     if (!matched.isEmpty()) {
+       for (Teacher t : matched) {
+         System.out.println("Teacher Name: " + t.getLastName()
+           + ", " + t.getFirstName() + "\n");
+       }
+     } else {
+       System.out.println("No teachers were found that teach the grade \""
+         + grade + "\"\n");
+     }
+   }
 
   /*
   * Gather all of the students at the specified grade level
