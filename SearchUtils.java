@@ -5,9 +5,8 @@
 * to be queried.
 */
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 
 public class SearchUtils {
 
@@ -326,7 +325,7 @@ public class SearchUtils {
         for (Teacher t : teachers) {
           if (t.getClassroom() == num) {
             System.out.println("Teacher Name: " + t.getLastName()
-              + ", " + t.getFirstName());
+              + ", " + t.getFirstName() + "\n");
           }
         }
       }
@@ -334,7 +333,7 @@ public class SearchUtils {
       for (Student s : students) {
         if (s.getClassroom() == num) {
           System.out.println("Student Name: " + s.getLastName()
-            + ", " + s.getFirstName());
+            + ", " + s.getFirstName() + "\n");
         }
       }
     }
@@ -347,7 +346,22 @@ public class SearchUtils {
   * with a total number of students in each of the classrooms)
   */
   public static void reportEnrollment(ArrayList<Student> students) {
+    TreeMap<Integer, Integer> rooms = new TreeMap<Integer, Integer>();
 
+    for (Student s : students) {
+      int room = s.getClassroom();
+      if (rooms.containsKey(room)) {
+        Integer i = rooms.get(room);
+        rooms.put(room, i + 1);
+      } else {
+        rooms.put(room, 1);
+      }
+    }
+
+    for (Map.Entry<Integer, Integer> i : rooms.entrySet()) {
+      System.out.println("Classroom " + i.getKey() + ": " + i.getValue() +
+        " students enrolled\n");
+    }
   }
 
   /*
