@@ -4,3 +4,16 @@ How to compile/run the program:
     "javac SchoolSearch.java"
 2. Run the program via the command:
     "java SchoolSearch"
+
+
+Accepted queries:
+
+S[tudent]: <lastname> [B[us]]
+T[eacher]: <lastname>
+B[us]: <number>
+G[rade]: <number> [G[rade]] [H[igh]] [L[ow]]
+A[verage]: <number>
+C[lassroom]: <number> [T[eacher]]
+E[nrollment]
+I[nfo]
+Q[uit]

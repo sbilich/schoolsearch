@@ -168,6 +168,14 @@ public class schoolsearch {
         case "Info":
             SearchUtils.getInfo(students);
             break;
+        case "C:":
+        case "Classroom:":
+            SearchUtils.searchByClassroom(userInput, teachers, students);
+            break;
+        case "E":
+        case "Enrollment":
+            SearchUtils.reportEnrollment(students);
+            break;
         case "Q":
         case "Quit":
             System.exit(0);
