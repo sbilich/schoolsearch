@@ -42,7 +42,7 @@ public class Teacher {
     Teacher teacher = null;
 
     for (Teacher t : lis) {
-      if (t.getLastName().equals(name)) {
+      if (t.getLastName().equals(name.toUpperCase())) {
         teacher = t;
         break;
       }
