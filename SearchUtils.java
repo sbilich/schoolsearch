@@ -283,20 +283,25 @@ public class SearchUtils {
     ArrayList<Student> matchingStudents = findStudentsInGrade(grade, students);
 
     if (!matchingStudents.isEmpty()) {
-      double total = 0, average = 0;
-
-      /* find the total gpa for all students in specified grade */
-      for (Student stu : matchingStudents) {
-        total += stu.getGpa();
-      }
-      //TODO: should the average value be rounded?
-      average = total / matchingStudents.size();
+      double average = getAverage(matchingStudents);
 
       System.out.println("Average for grade " + grade + ": " + average + "\n");
     } else {
       System.out.println("No students were found with the grade \""
         + grade + "\"\n");
     }
+  }
+
+  private static double getAverage(ArrayList<Student> students) {
+    double total = 0, average = 0;
+
+    /* find the total gpa for all students in specified grade */
+    for (Student stu : students) {
+      total += stu.getGpa();
+    }
+
+    average = total / students.size();
+    return average;
   }
 
   /*
@@ -364,6 +369,129 @@ public class SearchUtils {
     }
   }
 
+  private static TreeMap<String, ArrayList<Student>> getStudentsByTeacher(
+   ArrayList<Student> students, ArrayList<Teacher> teachers) {
+    TreeMap<String, ArrayList<Student>> m =
+     new TreeMap<String, ArrayList<Student>>();
+
+    for (Student s : students) {
+      Teacher t = s.findTeacher(teachers);
+      String name = t.getLastName() + "," + t.getFirstName();
+
+      ArrayList<Student> lis = null;
+      if (!m.containsKey(name)) {
+        lis = new ArrayList<Student>();
+      } else {
+        lis = m.get(name);
+      }
+      lis.add(s);
+      m.put(name, lis);
+    }
+
+    return m;
+  }
+
+  private static TreeMap<String, ArrayList<Student>> getStudentsByGrade(
+   ArrayList<Student> students) {
+    TreeMap<String, ArrayList<Student>> m =
+      new TreeMap<String, ArrayList<Student>>();
+
+    for (Student s : students) {
+      String grade = s.getGrade() + "";
+      ArrayList<Student> lis = null;
+      if (!m.containsKey(grade)) {
+        lis = new ArrayList<Student>();
+      } else {
+        lis = m.get(grade);
+      }
+      lis.add(s);
+      m.put(grade, lis);
+    }
+
+    return m;
+  }
+
+  private static TreeMap<String, ArrayList<Student>> getStudentsByBus(
+   ArrayList<Student> students) {
+    TreeMap<String, ArrayList<Student>> m =
+      new TreeMap<String, ArrayList<Student>>();
+
+    for (Student s : students) {
+      String bus = s.getBus() + "";
+      ArrayList<Student> lis = null;
+      if (!m.containsKey(bus)) {
+        lis = new ArrayList<Student>();
+      } else {
+        lis = m.get(bus);
+      }
+      lis.add(s);
+      m.put(bus, lis);
+    }
+
+    return m;
+  }
+
+  /*
+  * Returns the performance based on the specified factor {[G[rade]], [T[eacher]]
+  * [B[us]]}. Also accepts the optional flag [L[ist]]. Refer to the README for
+  * more in-depth functional details.
+  */
+  public static void getPerformance(String[] userInput,
+   ArrayList<Teacher> teachers, ArrayList<Student> students) {
+     if (userInput.length > 3) {
+       System.out.println("Usage: \"P[erformance]: [G[rade]] [T[eacher]]" +
+        " [B[us]] [L[ist]]\"\n");
+       return;
+     }
+
+     /* check if the "List" flag is specified */
+     boolean list = false;
+     if (userInput.length == 2) {
+       if (userInput[1].equals("L") || userInput[1].equals("List")) {
+         list = true;
+       }
+     } else if (userInput.length == 3) {
+       if (userInput[2].equals("L") || userInput[2].equals("List")) {
+         list = true;
+       }
+     }
+
+     TreeMap<String, ArrayList<Student>> matched;
+     if (userInput.length == 1 || userInput[1].equals("G")
+      || userInput[1].equals("Grade") || (userInput.length == 2 && list)) { /* defualt behavior */
+        matched = getStudentsByGrade(students);
+      } else if (userInput[1].equals("T") || userInput[1].equals("Teacher")) {
+        matched = getStudentsByTeacher(students, teachers);
+      } else if (userInput[1].equals("B") || userInput[1].equals("Bus")) {
+        matched = getStudentsByBus(students);
+      } else { /* invalid flags, output usage */
+        System.out.println("Usage: \"P[erformance]: [G[rade]] [T[eacher]]" +
+         " [B[us]] [L[ist]]\"\n");
+        return;
+      }
+
+      outputPerformance(matched, list);
+  }
+
+  private static void outputPerformance(
+   TreeMap<String, ArrayList<Student>> matched, boolean list) {
+     if (matched.isEmpty()) {
+       System.out.println("No students were found matching the given criteria\n");
+     } else {
+       for (Map.Entry<String, ArrayList<Student>> e : matched.entrySet()) {
+         double average = getAverage(e.getValue());
+         System.out.println(e.getKey() + ": " + average + "\n");
+
+         if (list) {
+           for (Student s : e.getValue()) {
+             System.out.println(s);
+           }
+           System.out.print("\n");
+         }
+       }
+     }
+  }
+
   /*
   * Gives the user a prompt to begin searching the students.
   */
@@ -374,6 +502,7 @@ public class SearchUtils {
     System.out.println("B[us]: <number>");
     System.out.println("G[rade]: <number> [H[igh] | L[ow]]");
     System.out.println("A[verage]: <number>");
+    System.out.println("P[erformance]: [G[rade]] [T[eacher]] [B[us]] [L[ist]]");
     System.out.println("I[nfo]");
     System.out.println("Q[uit]\n");
   }

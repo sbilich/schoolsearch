@@ -164,6 +164,10 @@ public class schoolsearch {
         case "Average:":
             SearchUtils.findAverage(userInput, students);
             break;
+        case "P:":
+        case "Performance:":
+            SearchUtils.getPerformance(userInput, teachers, students);
+            break;
         case "I":
         case "Info":
             SearchUtils.getInfo(students);

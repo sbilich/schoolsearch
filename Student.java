@@ -60,7 +60,8 @@ public class Student {
   }
 
   public String toString() {
-    return this.last + " " + this.first + " " + this.grade + " " + this.classroom + " " + this.bus + " " + this.gpa + " " + this.tlast + " " + this.tfirst;
+    return this.last + ", " + this.first + ", " + this.grade + ", "
+      + this.classroom + ", " + this.bus + ", " + this.gpa;
   }
 
   /*

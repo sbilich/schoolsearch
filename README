@@ -14,6 +14,25 @@ B[us]: <number>
 G[rade]: <number> [G[rade]] [H[igh]] [L[ow]]
 A[verage]: <number>
 C[lassroom]: <number> [T[eacher]]
+P[erformance]: [G[rade]] [T[eacher]] [B[us]] [L[ist]]
 E[nrollment]
 I[nfo]
 Q[uit]
+
+Description of Performance command:
+  All flags are case-sensitive:
+  
+  Factor flags = {Grade, Teacher, Bus}
+
+  If no factor flag is specified then "Grade" is used as a default.
+
+  Grade = output the average GPA for students in each grade
+  Teacher = output the average GPA for students being taught by each teacher
+  Bus = output the average GPA for the students on each bus route
+
+  Optional flag = {List}
+  *note: the flag must be listed after the factor flag, it cannot precede it.
+
+  List = specifies in addition to outputting the average GPA for each element of
+          a particular factor, also list the students associated with each
+          calculated average.
