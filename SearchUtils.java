@@ -323,27 +323,36 @@ public class SearchUtils {
   */
   public static void searchByClassroom(String[] userInput,
    ArrayList<Teacher> teachers, ArrayList<Student> students) {
+    boolean validClassroom = false;
     int num = Integer.parseInt(userInput[1]);
 
     if (userInput.length > 2) {
       if (userInput[2].equals("T") || userInput[2].equals("Teacher")) {
         for (Teacher t : teachers) {
           if (t.getClassroom() == num) {
+            validClassroom = true;
             System.out.println("Teacher Name: " + t.getLastName()
               + ", " + t.getFirstName() + "\n");
           }
+        }
+        if (!validClassroom) {
+          System.out.println("There are no teachers in classroom: " + num + "\n");
         }
       }
     } else {
       for (Student s : students) {
         if (s.getClassroom() == num) {
+          validClassroom = true;
           System.out.println("Student Name: " + s.getLastName()
             + ", " + s.getFirstName() + "\n");
         }
       }
+      if (!validClassroom) {
+        System.out.println("There are no students in classroom: " + num + "\n");
+      }
     }
-  }
 
+  }
 
   /*
   * Prints out the enrollments broken down by classroom
@@ -500,8 +509,10 @@ public class SearchUtils {
     System.out.println("S[tudent]: <lastname> [B[us]]");
     System.out.println("T[eacher]: <lastname>");
     System.out.println("B[us]: <number>");
-    System.out.println("G[rade]: <number> [H[igh] | L[ow]]");
+    System.out.println("G[rade]: <number> [H[igh] | L[ow]] [T[eacher]]");
     System.out.println("A[verage]: <number>");
+    System.out.println("C[lassroom]: [S[tudent]] [T[eacher]]");
+    System.out.println("E[nrollments]"); 
     System.out.println("P[erformance]: [G[rade]] [T[eacher]] [B[us]] [L[ist]]");
     System.out.println("I[nfo]");
     System.out.println("Q[uit]\n");

@@ -202,3 +202,223 @@ Info
 Choose another search operation:
 
 Q
+
+Choose another search operation:
+
+C: 111
+Student Name: STERBACK,  PETER
+
+Student Name: FINCHMAN,  MATHILDA
+
+Student Name: OBREIN,  STAN
+
+Student Name: SAENPHIMMACHA,  NUMBERS
+
+Student Name: BREVO,  JANNETTE
+
+Student Name: BEAN,  INGER
+
+Student Name: FEYEREISEN,  WILFREDO
+
+Student Name: WERST,  LEON
+
+Student Name: LAMKIN,  TAMA
+
+Choose another search operation:
+
+Classroom: 4
+There are no students in classroom: 4
+
+Choose another search operation:
+C: 104 T
+Teacher Name: STEIB,  GALE
+
+Choose another search operation:
+
+Classroom: 1000 Teacher
+There are no teachers in classroom: 1000
+
+Choose another search operation:
+
+Grade: 6 Teacher
+Teacher Name: NISTENDIRK,  NANCY
+
+Teacher Name: BODZIONY,  LUZ
+
+Teacher Name: GAMBREL,  JAE
+
+Teacher Name: KERBS,  BENITO
+
+Choose another search operation:
+
+G: 50 T
+No teachers were found that teach the grade "50"
+
+Choose another search operation:
+
+E
+Classroom 101: 1 students enrolled
+
+Classroom 102: 5 students enrolled
+
+Classroom 103: 2 students enrolled
+
+Classroom 104: 2 students enrolled
+
+Classroom 105: 6 students enrolled
+
+Classroom 106: 2 students enrolled
+
+Classroom 107: 7 students enrolled
+
+Classroom 108: 11 students enrolled
+
+Classroom 109: 5 students enrolled
+
+Classroom 110: 2 students enrolled
+
+Classroom 111: 9 students enrolled
+
+Classroom 112: 8 students enrolled
+
+Choose another search operation:
+
+P: G
+1: 2.995
+
+2: 2.946153846153846
+
+3: 3.048888888888889
+
+4: 2.951333333333334
+
+6: 2.9771428571428578
+
+Choose another search operation:
+
+P: Teacher
+ALPERT, JONATHAN: 3.17
+
+BODZIONY, LUZ: 3.09
+
+CHIONCHIO, PERLA: 2.985
+
+COOL, REUBEN: 2.91
+
+FAFARD, ROCIO: 3.0142857142857147
+
+FALKER, ADOLPH: 2.995
+
+GAMBREL, JAE: 2.96
+
+HAMER, GAVIN: 2.9545454545454546
+
+HANTZ, JED: 2.9133333333333336
+
+KERBS, BENITO: 2.976
+
+NISTENDIRK, NANCY: 2.962222222222222
+
+STEIB, GALE: 2.9
+
+Choose another search operation:
+
+Performance: B
+0: 2.9525
+
+51: 3.02
+
+52: 2.885
+
+53: 3.0555555555555554
+
+54: 2.941666666666667
+
+55: 3.0366666666666666
+
+56: 2.9216666666666664
+
+Choose another search operation:
+
+P: List
+1: 2.995
+
+SAELEE,  DANILO, 1, 103, 54, 2.85
+GARTH,  JOHN, 1, 103, 0, 3.14
+
+2: 2.946153846153846
+
+WOOLERY,  NOLAN, 2, 104, 51, 2.92
+VILARDO,  EMMANUEL, 2, 104, 56, 2.88
+LIBRANDI,  TODD, 2, 108, 51, 2.96
+HAVIR,  BOBBIE, 2, 108, 0, 2.88
+SARAO,  DIEDRA, 2, 108, 52, 2.79
+VANCOTT,  MIKE, 2, 108, 54, 2.89
+WICINSKY,  TERESE, 2, 108, 53, 3.22
+KOZOLA,  BUSTER, 2, 108, 55, 2.76
+MULLINGS,  LEIGHANN, 2, 108, 51, 3.09
+BUSSMANN,  BILLY, 2, 108, 56, 3.01
+BERBES,  DICK, 2, 108, 54, 2.93
+MULGREW,  RANDELL, 2, 108, 54, 3.05
+TOWLEY,  LANE, 2, 108, 54, 2.92
+
+3: 3.048888888888889
+
+COOKUS,  XUAN, 3, 107, 52, 3.07
+ELHADDAD,  SHANTE, 3, 107, 52, 2.86
+BRODERSEN,  HYE, 3, 110, 0, 3.11
+SWEDLUND,  SHARRI, 3, 107, 55, 3.24
+CIGANEK,  MANIE, 3, 107, 53, 2.79
+COVINGTON,  TOMAS, 3, 107, 51, 3.11
+EARLY,  TORY, 3, 107, 52, 2.91
+LINHART,  LELA, 3, 107, 53, 3.12
+THEUNISSEN,  GRACE, 3, 110, 54, 3.23
+
+4: 2.951333333333334
+
+CORKER,  CARTER, 4, 105, 53, 3.12
+IMMERMAN,  DEVIN, 4, 105, 52, 2.78
+RAPOSE,  ALONZO, 4, 105, 51, 3.12
+WORBINGTON,  DEEDRA, 4, 112, 53, 2.99
+OGAS,  ERVIN, 4, 105, 54, 2.84
+SPANICEK,  KENDRA, 4, 112, 53, 3.1
+GUICE,  CODI, 4, 112, 54, 2.98
+GLOR,  HUNG, 4, 112, 54, 2.87
+GUM,  NOAH, 4, 112, 54, 2.95
+MASSART,  ELDON, 4, 105, 0, 2.8
+NOVICK,  ROLLAND, 4, 112, 54, 2.97
+DURAND,  CARLEE, 4, 101, 51, 2.91
+BEX,  TAMESHA, 4, 105, 55, 2.82
+DELUNA,  KRYSTAL, 4, 112, 53, 3.02
+COMO,  ZANDRA, 4, 112, 53, 3.0
+
+6: 2.9771428571428578
+
+SCHOENECKER,  PHUONG, 6, 109, 0, 3.15
+RACANELLO,  NOEL, 6, 102, 56, 3.13
+STERBACK,  PETER, 6, 111, 51, 3.02
+FINCHMAN,  MATHILDA, 6, 111, 0, 2.81
+ZAPPAVIGNA,  ELLIOTT, 6, 106, 55, 3.15
+OBREIN,  STAN, 6, 111, 52, 2.95
+CORONADO,  DIMPLE, 6, 102, 52, 2.88
+SAENPHIMMACHA,  NUMBERS, 6, 111, 55, 2.88
+BOYTER,  WAN, 6, 102, 55, 3.1
+BREVO,  JANNETTE, 6, 111, 54, 2.82
+CLECKLER,  FLOY, 6, 109, 53, 3.14
+KRAKE,  VALENTIN, 6, 109, 56, 2.78
+KEMERER,  ROSETTA, 6, 102, 52, 2.84
+BEAN,  INGER, 6, 111, 56, 2.84
+DEMARTINI,  DEWAYNE, 6, 102, 55, 2.93
+CREMEANS,  RANDOLPH, 6, 109, 0, 2.88
+FEYEREISEN,  WILFREDO, 6, 111, 56, 2.89
+WERST,  LEON, 6, 111, 55, 3.22
+LAMKIN,  TAMA, 6, 111, 55, 3.23
+KREESE,  CARRIE, 6, 109, 0, 2.85
+FRIEDSTROM,  REED, 6, 106, 51, 3.03
+
+Choose another search operation:
+
+P: L G
+Usage: "P[erformance]: [G[rade]] [T[eacher]] [B[us]] [L[ist]]"
+
+Choose another search operation: 

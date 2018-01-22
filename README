@@ -11,7 +11,7 @@ Accepted queries:
 S[tudent]: <lastname> [B[us]]
 T[eacher]: <lastname>
 B[us]: <number>
-G[rade]: <number> [G[rade]] [H[igh]] [L[ow]]
+G[rade]: <number> [G[rade]] [H[igh]] [L[ow]] [T[eacher]]
 A[verage]: <number>
 C[lassroom]: <number> [T[eacher]]
 P[erformance]: [G[rade]] [T[eacher]] [B[us]] [L[ist]]
@@ -21,7 +21,7 @@ Q[uit]
 
 Description of Performance command:
   All flags are case-sensitive:
-  
+
   Factor flags = {Grade, Teacher, Bus}
 
   If no factor flag is specified then "Grade" is used as a default.

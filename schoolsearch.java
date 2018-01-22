@@ -46,7 +46,7 @@ public class schoolsearch {
 
         /* parse in student object */
         if (strs.length != STUDENT_SIZE) {
-          throw new InvalidStudentException("incorrect number of fields");
+          throw new InvalidInputException("incorrect number of fields");
         }
 
         String last = strs[0];
@@ -63,7 +63,7 @@ public class schoolsearch {
 
       sc.close();
     }
-    catch (InvalidStudentException | NumberFormatException e)
+    catch (InvalidInputException | NumberFormatException e)
     {
       System.out.println("Invalid students file: " + e);
       System.exit(0);
@@ -108,7 +108,6 @@ public class schoolsearch {
         String last = strs[0];
         String first = strs[1];
         int classroom = Integer.parseInt(strs[2].trim());
-        System.out.println(classroom);
 
         Teacher teacher = new Teacher(last, first, classroom);
         teachers.add(teacher);
